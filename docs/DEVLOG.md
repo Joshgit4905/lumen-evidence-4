@@ -13,18 +13,18 @@ Each entry: date, what was done, why, evidence (commit link or screenshot), and 
 - **Evidence:** [commit link] / [screenshot of branch protection settings]
 - **Problems and fixes:** [describe, or delete this line if none]
 
-### Entry 2: [YYYY-MM-DD]: Extracted note logic into a module
+### Entry 2: [YYYY-MM-DD]: Made the helpers testable
 
-- **What:** moved create, delete, search, and storage functions out of `index.html` into `js/notes.js`.
-- **Why:** the tests need to import the logic, and the inline script cannot be imported.
+- **What:** marked the pure helper functions in `index.html` with `@core` comments and wrote a loader (`test/helpers.js`) that evaluates them in Node.
+- **Why:** the app must stay a single HTML file, but the tests need to run its real code.
 - **Evidence:** [commit link]
-- **Problems and fixes:** [example: the inline script used globals, so the functions were exported and the DOM code was left in the page]
+- **Problems and fixes:** [example: the script runs inside one closure, so only DOM-free helpers were marked for extraction]
 
 ### Entry 3: [YYYY-MM-DD]: First unit tests
 
 - **What:** added `test/notes.test.js` with normal, edge, and invalid cases; `npm test` runs locally.
 - **Why:** the brief requires at least five meaningful unit tests.
-- **Evidence:** [commit link] / [screenshot of `npm test` output with 16 passing]
+- **Evidence:** [commit link] / [screenshot of `npm test` output with 15 passing]
 - **Problems and fixes:** [example: `localStorage` is not defined in Node, fixed by injecting a storage object into `loadNotes` and `saveNotes`]
 
 ### Entry 4: [YYYY-MM-DD]: CI on pull requests
