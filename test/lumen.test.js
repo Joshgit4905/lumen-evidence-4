@@ -11,6 +11,9 @@ describe('norm (search normalization)', () => {
   test('normal: strips accents so "página" matches "pagina"', () => {
     assert.equal(norm('Página Diseño Ñandú'), 'pagina diseno nandu');
   });
+  test('edge: ñ is kept as a distinct letter in search keys', () => {
+    assert.equal(norm('Ñandú'), 'ñandu');
+  });
   test('edge: null and undefined become an empty string', () => {
     assert.equal(norm(null), '');
     assert.equal(norm(undefined), '');
